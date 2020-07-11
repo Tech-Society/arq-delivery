@@ -44,6 +44,23 @@ ngb-carousel {
     
 }
 
+
+
+.bg-adm{
+  background-image: url('/assets/trama-2.png');
+  background-repeat: no-repeat;
+  background-position: top bottom;
+  // width: 20%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  /* background-color: transparent ; */
+  background-repeat: no-repeat;
+  background-position: right;
+
+}
+
 @media (max-width: 600px) {
     .navbar-expand-lg .navbar-nav {
         flex-direction: column;
