@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'mi-perfil', component: MiPerfilComponent},
   { path: 'login', component: LoginComponent},
   { path: 'listar-ordenes', component: ListOrdersComponent},
-  { path: 'detalle-servicio', component: DetalleServicioComponent},
+  { path: 'detalle-servicio/:id', component: DetalleServicioComponent},
   // { path: 'detalle-servicio/:id', component: DetalleServicioComponent},
 
   { path: '**', pathMatch: 'full', redirectTo: 'landing' },
