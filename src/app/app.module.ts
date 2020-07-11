@@ -17,6 +17,9 @@ import { NosotrosComponent } from './components/pages/nosotros/nosotros.componen
 import { ListServicesComponent } from './components/pages-admin/list-services/list-services.component';
 import { ListCustomersComponent } from './components/pages-admin/list-customers/list-customers.component';
 import { ListOrdersComponent } from './components/pages-admin/list-orders/list-orders.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
+import { NavbarAdmComponent } from './components/shared/navbar-adm/navbar-adm.component';
+import { ListDeliveryComponent } from './components/pages-admin/list-delivery/list-delivery.component';
 
 
 const routes: Routes = [
@@ -37,7 +40,10 @@ const routes: Routes = [
     NosotrosComponent,
     ListServicesComponent,
     ListCustomersComponent,
-    ListOrdersComponent
+    ListOrdersComponent,
+    SidebarComponent,
+    NavbarAdmComponent,
+    ListDeliveryComponent
   ],
   imports: [
     BrowserModule,

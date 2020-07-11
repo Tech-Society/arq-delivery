@@ -1,1 +1,62 @@
-<p>list-customers works!</p>
+<header>
+    <app-navbar-adm></app-navbar-adm>
+  </header>
+  <div class="container-home">
+    <div class="sidebar-left">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="cuerpo p-4 animated zoomInUp">
+      <div class="m-4 box-header">
+        <span class="title-form">Clientes</span>
+        <div class="actions">
+          <input type="button" value="Agregar Nuevo Cliente" class="btn orange ml-2" >
+        </div>
+      </div>
+      <div class="m-4">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                </div>
+                <input type="text" class="form-control"  placeholder="Buscar..."
+                  aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <!-- <mat-paginator [length]="listPuntos.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions"
+                (page)="handlePage($event)">
+              </mat-paginator> -->
+            </div>
+          </div>
+        </div>
+        <table  class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nombres y Apellidos</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Carlos Harold Ñahuiña balbuena</td>
+              <td>cnahuina@gmail.com</td>
+              <td class="df-fr">
+                <div style="cursor: pointer" data-toggle="modal" data-target="#newUser"> <img
+                    src="assets/icons/edit.svg" width="12" alt=""> <span class="ml-2 asignarPriv">Editar</span></div>
+                <div style="cursor: pointer" data-toggle="modal" data-target="#panelDigital">
+                  <img src="assets/icons/delete.svg" width="12" alt=""><span class="ml-2 deletePriv">Eliminar</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!--
+        <pagination-controls (pageChange)="pages = $event" previousLabel="Atrás" nextLabel="Siguiente">
+        </pagination-controls>
+        -->
+      </div>
+    </div>
+  </div>
