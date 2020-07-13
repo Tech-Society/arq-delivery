@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../../services/http.service';
+import { GLOBAL } from '../../../services/global';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detalle-servicio',
@@ -11,15 +13,18 @@ import { HttpService } from '../../../services/http.service';
 export class DetalleServicioComponent implements OnInit {
 
   public services = {
-    service_jd: "",
+    servicesId: "",
     title: "",
     description: "",
-    clothes_quantity: "",
+    clothingId: "",
     price: "",
-    status: ""
+    image: ""
   };
+  public URLimage = "";
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private http: HttpService) { }
+  constructor(private toastr: ToastrService, private _route: ActivatedRoute, private _router: Router, private http: HttpService) {
+    this.URLimage = GLOBAL.image;
+  }
 
   ngOnInit(): void {
     const url = this._router.url;
@@ -32,17 +37,20 @@ export class DetalleServicioComponent implements OnInit {
     this.http.getServiceById(ID).subscribe(
       data => {
         // @ts-ignore
-        const data_body = data._body;
-        const json = JSON.parse(data_body);
-        const services_data = json.data;
-        this.services.service_jd = services_data.service_jd
+        const services_data = data.data[0];
+        this.services.servicesId = services_data.servicesId
         this.services.title = services_data.title
         this.services.description = services_data.description
-        this.services.clothes_quantity = services_data.clothes_quantity
+        this.services.clothingId = services_data.clothingId
         this.services.price = services_data.price
-        this.services.status = services_data.status
+        this.services.image = services_data.image
       }
     );
+  }
+
+  requestService(i){
+    localStorage.setItem('cesta', JSON.stringify(i));
+    this.toastr.success('Agregado a la cesta');
   }
 
 }

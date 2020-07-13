@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../../services/http.service';
+import { GLOBAL } from '../../../services/global';
 
 @Component({
   selector: 'app-servicios',
@@ -10,7 +11,11 @@ import { HttpService } from '../../../services/http.service';
 export class ServiciosComponent implements OnInit {
 
   public listService = [];
-  constructor(private http: HttpService) { }
+  public URLimage = "";
+
+  constructor(private http: HttpService) {
+    this.URLimage = GLOBAL.image;
+  }
 
   ngOnInit(): void {
     this.getServices();

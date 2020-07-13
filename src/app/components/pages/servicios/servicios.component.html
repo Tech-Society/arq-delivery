@@ -9,24 +9,9 @@
       </div>
       <div class="item-servicios" *ngFor="let s of listService; let i = index;">
         <div class="card shadow text-center">
-          <div class="card-header" style="padding: 0px;" *ngIf="i === 0">
-            <a [routerLink]="['/detalle-servicio/'+s.service_jd]">
-              <img class="card-img" src="./assets/services-lavado.png" alt="" />
-            </a>
-          </div>
-          <div class="card-header" style="padding: 0px;" *ngIf="i === 1">
-            <a [routerLink]="['/detalle-servicio/'+s.service_jd]">
-              <img class="card-img" src="./assets/services-alfombras.png" alt="" />
-            </a>
-          </div>
-          <div class="card-header" style="padding: 0px;" *ngIf="i === 2">
-            <a [routerLink]="['/detalle-servicio/'+s.service_jd]">
-              <img class="card-img" src="./assets/services-cortina.png" alt="" />
-            </a>
-          </div>
-          <div class="card-header" style="padding: 0px;" *ngIf="i === 3">
-            <a [routerLink]="['/detalle-servicio/'+s.service_jd]">
-              <img class="card-img" src="./assets/services-tinte.png" alt="" />
+          <div class="card-header" style="padding: 0px;">
+            <a [routerLink]="['/detalle-servicio/'+s.servicesId]">
+              <img class="card-img" src="{{URLimage + s.image}}" alt="" />
             </a>
           </div>
           <div class="card-img-top">

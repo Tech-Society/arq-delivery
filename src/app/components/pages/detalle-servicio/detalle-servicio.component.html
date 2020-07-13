@@ -9,7 +9,7 @@
   <div class="row justify-content-center">
     <div class="col-4">
       <div class="card text-center">
-        <img class="card-img" src="./assets/services-lavado.png" alt="" />
+        <img class="card-img" src="{{URLimage + services.image}}" alt="" />
       </div>
     </div>
     <div class="col-6">
@@ -37,7 +37,7 @@
 
       </div>
       <div class="sideButtons">
-        <button type="button" [routerLink]="['/cesta']" class="btn btn-solicitud">
+        <button type="button" (click)="requestService(services.servicesId)" class="btn btn-solicitud">
           Solicitar servicio
         </button>
       </div>

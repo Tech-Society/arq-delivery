@@ -10,7 +10,8 @@
             <div class="m-4 box-header">
                 <span class="title-form">Clientes</span>
                 <div class="actions">
-                    <input type="button" value="Agregar Nuevo Cliente" class="btn orange ml-2">
+                    <input type="button" value="Agregar Nuevo Cliente" data-toggle="modal" data-target="#exampleModal"
+                        class="btn orange ml-2">
                 </div>
             </div>
             <div class="m-4">
@@ -25,11 +26,6 @@
                                     aria-describedby="basic-addon1">
                             </div>
                         </div>
-                        <div class="col-lg-7">
-                            <!-- <mat-paginator [length]="listPuntos.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions"
-                    (page)="handlePage($event)">
-                  </mat-paginator> -->
-                        </div>
                     </div>
                 </div>
                 <table class="table">
@@ -41,9 +37,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Carlos Harold Ñahuiña balbuena</td>
-                            <td>cnahuina@gmail.com</td>
+                        <tr *ngFor="let u of listUsers">
+                            <td>{{u.first_name}} {{u.last_name}}</td>
+                            <td>{{u.email}}</td>
                             <td class="df-fr">
                                 <div style="cursor: pointer" data-toggle="modal" data-target="#newUser"> <img
                                         src="assets/icons/edit.svg" width="12" alt=""> <span
@@ -56,12 +52,66 @@
                         </tr>
                     </tbody>
                 </table>
-                <!--
-            <pagination-controls (pageChange)="pages = $event" previousLabel="Atrás" nextLabel="Siguiente">
-            </pagination-controls>
-            -->
             </div>
         </div>
     </div>
+</div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo cliente</h5>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="row pt-1">
+                        <div class="col-lg-6">
+                            <label for="">Nombres</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.first_name">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="">Apellidos</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.last_name">
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-lg-6">
+                            <label for="">Correo</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.email">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="">Teléfono</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.phone">
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col-lg-6">
+                            <label for="">Contraseña</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.password">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="">Confirmar contraseña</label>
+                            <input type="text" class="form-control" [(ngModel)]="user.confirm_password">
+                        </div>
+                    </div>
+                    <div class="row pt-4">
+                        <div class="col-lg-4">
+                            <button type="button" (click)="saveUser()" class="btn orange btn-block"><i
+                                    class="fa fa-save"></i> Grabar</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" (click)="clean()" class="btn btn-secondary btn-block"><i
+                                    class="fa fa-circle"></i> Clean</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"
+                                aria-label="Close"><i class="fa fa-times"></i> Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
