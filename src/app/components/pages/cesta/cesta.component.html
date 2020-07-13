@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+<!--Imagen de Cabecera-->
+<img style="margin-top: 90px; height: 70px; width: 100%; object-fit: cover;" class="img-fluid"
+    src="./assets/cabecera.jpg" alt="" />
+<!--Fin Imagen de Cabecera-->
+<!--Servicio-->
+<div class="container cestaContent">
+    <div class="dataForm">
+        <form class="m-4 form-datos">
+            <div class="mb-4">
+                <span class="title-form">Datos personales</span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="text" required="" name="first_name">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Nombres</label>
+                </div>
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="text" required="" name="last_name">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Apellidos</label>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="email">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Correo</label>
+
+                </div>
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="phone">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Telefono</label>
+
+                </div>
+            </div>
+            <div class="mb-4">
+                <span class="title-form">Datos para envio o recojo</span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 md-input pb-2">
+                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="phone">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Direccion</label>
+
+                </div>
+                <div class="col-sm-12 md-input">
+                    <textarea class="md-form-input" placeholder="Nota de envio o recojo"></textarea>
+
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <span class="title-form">No eres cliente?</span>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 md-input">
+                    <input class="md-form-input" type="text" required="">
+                    <span class="highlight"></span>
+                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Usuario</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="password" autocomplete="new-password" required="">
+                    <span class="highlight"></span>
+                    <label class="label2"><i class="fas fa-key"></i> Contraseña</label>
+                    <small>Contraseña mayor a 6 dígitos</small>
+                </div>
+                <div class="col-sm-6 md-input">
+                    <input class="md-form-input" type="password" autocomplete="new-password" required="">
+                    <span class="highlight"></span>
+                    <label class="label2"><i class="fas fa-key"></i> Repetir contraseña</label>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="cestaDetail">
+        <div class="table-responsive">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Tipo Delivery</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Lavado</td>
+                            <td>Recojo</td>
+                            <td>14</td>
+                            <td><img src="assets/icons/delete.svg" width="12" alt=""> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="precioTotal">
+            <h4>Precio:</h4>
+            <h5>S/ 20</h5>
+        </div>
+        <div class="btnSide">
+            <input type="button" class="btn btn-enter" value="Solicitar Orden">
+        </div>
+
+    </div>
+
+</div>
+<!--Fin Servicio-->
+<div class="servicesContent">
+    <app-servicios></app-servicios>
+</div>
+<app-footer></app-footer>

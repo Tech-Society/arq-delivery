@@ -10,6 +10,7 @@ import { ListOrdersComponent } from './components/pages-admin/list-orders/list-o
 import { ListServicesComponent } from './components/pages-admin/list-services/list-services.component';
 import { ListDeliveryComponent } from './components/pages-admin/list-delivery/list-delivery.component';
 import { ListCustomersComponent } from './components/pages-admin/list-customers/list-customers.component';
+import { CestaComponent } from './components/pages/cesta/cesta.component';
 
 
 // /* Privileges */
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'listar-delivery', component: ListDeliveryComponent},
   { path: 'listar-servicios', component: ListServicesComponent},
   { path: 'listar-clientes', component: ListCustomersComponent},
+  { path: 'cesta', component: CestaComponent},
   { path: 'detalle-servicio/:id', component: DetalleServicioComponent},
   // { path: 'detalle-servicio/:id', component: DetalleServicioComponent},
 

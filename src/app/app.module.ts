@@ -20,6 +20,7 @@ import { ListOrdersComponent } from './components/pages-admin/list-orders/list-o
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { NavbarAdmComponent } from './components/shared/navbar-adm/navbar-adm.component';
 import { ListDeliveryComponent } from './components/pages-admin/list-delivery/list-delivery.component';
+import { CestaComponent } from './components/pages/cesta/cesta.component';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
     ListOrdersComponent,
     SidebarComponent,
     NavbarAdmComponent,
-    ListDeliveryComponent
+    ListDeliveryComponent,
+    CestaComponent
   ],
   imports: [
     BrowserModule,

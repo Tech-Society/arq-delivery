@@ -321,8 +321,8 @@ ngb-carousel {
   .btn-enter{
     width: 367px;
     height: 60px;
-    background: #f99d1c;
-    border: #F99D1C;
+    background: #2b6ca3;
+    border: #2b6ca3;
     border-radius: 10px;
     color: #FFFFFF;
     
@@ -350,7 +350,7 @@ ngb-carousel {
   }
   .md-input {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
     .md-input .md-form-control {
         font-size: 16px;
@@ -870,3 +870,110 @@ ngb-carousel {
   }
   
   
+
+  
+
+  // Detail Service CSS
+
+  .detailService{
+    padding: 4% 0;
+    margin: 2% auto;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.servicesContent{
+    padding: 2% 0 4%;
+}
+
+.btn-solicitud{
+    color: white;
+    background-color: #2b6ca3;
+    align-self: end;
+    width: 50%;
+}
+.servicioDetalle{
+    display: flex;
+    flex-direction: column;
+}
+.tipoDelivery{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4% 0;
+}
+    .tipoDelivery h5{
+        font-size: 10px;
+        font-style: italic;
+    }
+.precioServicio{
+    display: flex;
+    justify-content: flex-end;
+    padding: 4% 0;
+    align-items: center;
+}
+    .precioServicio h4{
+        padding-right: 2%;
+    }
+    .precioServicio h5{
+        border:1px solid #2b6ca3;
+        padding: 2%;
+        border-radius: 4px;
+    }
+
+.sideButtons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+// End DetailService CSS
+
+
+// Cesta CSS
+
+.cestaContent{
+  margin-top: 2%;
+  padding: 2% 0;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.dataForm{
+  display: flex;
+  border: 1px solid #cccccc;
+  width: 59%;
+}
+
+.cestaDetail{
+  display: flex;
+  flex-direction: column;
+  width: 39%;
+  height: 50vh;
+}
+.form-datos{
+  width: 100%;
+}
+.btnSide{
+  width: 100%;
+  text-align: center;
+  margin-top: 4%;
+}
+.precioTotal{
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+  .precioTotal h4{
+    padding-right: 2%;
+  }
+  .precioTotal h5{
+    width: 30%;
+    text-align: center;
+    border:1px solid #2b6ca3;
+    padding: 2%;
+    border-radius: 4px;
+  }

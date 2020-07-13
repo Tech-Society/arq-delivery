@@ -1,56 +1,51 @@
-   
-   <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 
-   <!--Imagen de Cabecera-->
-    <img
-      style="margin-top: 90px; height: 70px; width: 100%; object-fit: cover;"
-      class="img-fluid"
-      src="./assets/cabecera.jpg"
-      alt=""
-    />
-    <!--Fin Imagen de Cabecera-->
-    <!--Servicio-->
-    <div class="container" style="margin-bottom: 8%; margin-top: 8%;">
-      <div class="row justify-content-center" style="margin-top: 30px;">
-        <div class="col-4">
-          <div class="card text-center">
-            <img class="card-img" src="./assets/services-lavado.png" alt="" />
-          </div>
-        </div>
-        <div class="col-6">
-          <h2>Servicio: {{ services.title }}</h2>
-          <br />
-          <p>
-            {{ services.description }}
-          </p>
-          <div class="row justify-content-end align-items-center">
-            <div class="col-5">
-              <h5 style="text-align: end;">Precio por servicio:</h5>
-            </div>
-            <div class="col-3">
-              <h5 style="text-align: end;">S/ {{ services.price }}</h5>
-            </div>
-          </div>
-          <div class="row justify-content-end" style="margin-top: 10px;">
-            <button
-              type="button"
-              class="btn"
-              style="
-                color: white;
-                background-color: #2b6ca3;
-                align-self: end;
-                width: 50%;
-              "
-            >
-              Solicitar delivery
-            </button>
-          </div>
-        </div>
+<!--Imagen de Cabecera-->
+<img style="margin-top: 90px; height: 70px; width: 100%; object-fit: cover;" class="img-fluid"
+  src="./assets/cabecera.jpg" alt="" />
+<!--Fin Imagen de Cabecera-->
+<!--Servicio-->
+<div class="container detailService">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="card text-center">
+        <img class="card-img" src="./assets/services-lavado.png" alt="" />
       </div>
     </div>
-    <!--Fin Servicio-->
-    <app-servicios></app-servicios>
+    <div class="col-6">
+      <div class="servicioDetalle">
+        <h2>Servicio: {{ services.title }}</h2>
+        <p style="text-align: justify;">
+          {{ services.description }}
+        </p>
+      </div>
+      <div class="tipoDelivery">
+        <h5>Desea Delivery?</h5>
+        <select class="form-control input-select">
+          <option value="">Tipo delivery</option>
+          <option value="Recojo">Recojo</option>
+          <option value="Envio">Envío</option>
+          <option value="Envio">Recojo y Envío</option>
+          <option value="Envio">Ninguno</option>
+        </select>
+      </div>
+      <div class="precioServicio">
 
-    <div class="pt-4"></div>
-    <div class="pt-4"></div>
-    <app-footer></app-footer>
+        <h4>Precio:</h4>
+
+        <h5>S/ {{ services.price }}</h5>
+
+      </div>
+      <div class="sideButtons">
+        <button type="button" class="btn btn-solicitud">
+          Solicitar servicio
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fin Servicio-->
+<div class="servicesContent">
+  <app-servicios></app-servicios>
+</div>
+<app-footer></app-footer>
