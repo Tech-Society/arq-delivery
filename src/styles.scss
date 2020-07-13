@@ -886,10 +886,11 @@ ngb-carousel {
 }
 
 .btn-solicitud{
-    color: white;
+    color: white!important;
     background-color: #2b6ca3;
     align-self: end;
-    width: 50%;
+    font-size: 18px;
+    width: 100%;
 }
 .servicioDetalle{
     display: flex;
@@ -958,6 +959,8 @@ ngb-carousel {
 }
 .btnSide{
   width: 100%;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   margin-top: 4%;
 }
@@ -977,3 +980,7 @@ ngb-carousel {
     padding: 2%;
     border-radius: 4px;
   }
+
+.link-call{
+  color: #2b6ca3!important;
+}
