@@ -17,7 +17,7 @@ h1{
 }
 .navbar-light{
     transition: 400;
-    background-color: transparent!important;
+    background-color: #ffffff!important;
 }
 .navbar-light.scrolled{
     background-color: #ffffff!important;
@@ -26,11 +26,11 @@ h1{
 
 ngb-carousel img {
     width: 100%;
-    height: 100vh!important;
+    height: 60vh!important;
     object-fit: cover;
     background-color: #000000!important;
-    opacity: .6;
-    filter: alpha(opacity=60);
+    opacity: .8;
+    // filter: alpha(opacity=60);
 }
 
 ngb-carousel {
@@ -88,7 +88,7 @@ ngb-carousel {
 
   .foot{
     padding: 2% 0 ;
-    background-color: #2b6ca3;
+    background-color: #16242f;
     color: white;
     text-align: center;
   }
@@ -984,3 +984,46 @@ ngb-carousel {
 .link-call{
   color: #2b6ca3!important;
 }
+
+// landing 
+.content-total{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.servicios-content{
+  display: flex;
+  // border: 1px solid #cccccc;
+  width: 69%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sidebar-landing{
+  display: flex;
+  // border: 1px solid #cccccc;
+  width: 28%;
+}
+  .sidebar-landing h2{
+    color: #2b6ca3;
+  }
+
+.item-servicios{
+  margin: 2%;
+  width: 46%;
+}
+
+.section-protocolos{
+  background-color: #2b6ca3;
+  text-align: center;
+  padding: 4% 0;
+}
+.section-protocolos h1{
+  color: #FFFFFF;
+}
+  .protocolos{
+    padding-top: 2%;
+  }
+  .protocolos img{
+    padding: 4% 10px;
+  }
