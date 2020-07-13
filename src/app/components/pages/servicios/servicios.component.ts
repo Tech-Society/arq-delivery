@@ -19,11 +19,7 @@ export class ServiciosComponent implements OnInit {
   getServices(){
     this.http.getService().subscribe(
       data => {
-        // @ts-ignore
-        const data_body = data._body;
-        const json = JSON.parse(data_body);
-        this.listService = json.data;
-        console.log(this.listService);
+        this.listService = data.data;
       }
     );
   }

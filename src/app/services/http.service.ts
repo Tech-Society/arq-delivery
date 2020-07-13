@@ -21,12 +21,12 @@ export class HttpService {
 
   getService() {
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.url + '/service', { headers: headers });
+    return this.http.get(this.url + '/services/list', { headers: headers }).map(res => res.json());
   }
 
   getServiceById(i) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
-    return this.http.get(this.url + '/service/'+i, { headers: headers });
+    return this.http.get(this.url + '/services/'+i, { headers: headers }).map(res => res.json());
   }
 
   /*************** Token Decoded ***************/
