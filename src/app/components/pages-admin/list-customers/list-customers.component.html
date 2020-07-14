@@ -22,7 +22,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Buscar..." aria-label="Username"
+                                <input type="text" class="form-control" (keyup)="search($event.target.value)"  placeholder="Buscar..." aria-label="Username"
                                     aria-describedby="basic-addon1">
                             </div>
                         </div>
@@ -33,13 +33,18 @@
                         <tr>
                             <th scope="col">Nombres y Apellidos</th>
                             <th scope="col">Correo</th>
+                            <th scope="col">Perfil</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let u of listUsers">
+                        <tr *ngFor="let u of listUsers | paginate: { itemsPerPage: 5, currentPage: p }">
                             <td>{{u.first_name}} {{u.last_name}}</td>
                             <td>{{u.email}}</td>
+                            <!-- <td>{{u.profile}}</td> -->
+                            <td *ngIf="u.profile === 1"><span class="badge badge-dark">Administrador</span></td> 
+                            <td *ngIf="u.profile === 2"><span class="badge badge-light">Cliente</span></td>
+                            <td *ngIf="u.profile === 3"><span class="badge badge-info">Motorizado</span></td>
                             <td class="df-fr">
                                 <div style="cursor: pointer" data-toggle="modal" data-target="#newUser"> <img
                                         src="assets/icons/edit.svg" width="12" alt=""> <span
@@ -52,6 +57,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
             </div>
         </div>
     </div>

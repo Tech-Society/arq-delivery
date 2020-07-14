@@ -44,6 +44,11 @@ export class HttpService {
     return this.http.post(this.url + '/user/create', data, { headers: headers }).map(res => res.json());
   }
 
+  updateUser(data) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.put(this.url + '/user/update', data, { headers: headers }).map(res => res.json());
+  }
+
   /*************** Services ***************/
 
   getService() {
@@ -88,6 +93,11 @@ export class HttpService {
   getUserServices() {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.get(this.url + '/userServices/getList', { headers: headers }).map(res => res.json());
+  }
+
+  updateStateUserServices(data) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.put(this.url + '/userServices/update', data, { headers: headers }).map(res => res.json());
   }
 
   /*************** Token Decoded ***************/

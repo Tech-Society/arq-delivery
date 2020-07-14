@@ -87,13 +87,24 @@ export class NavbarComponent implements OnInit {
       if( password === confirm_password ){
         this.http.signup(this.userRegister).subscribe(
           data =>{
-            this.toastr.success('Registro exitoso');
+            if(data.status === "success"){
+              this.toastr.success('Registro exitoso');
+              this.clean();
+            }else{
+              this.toastr.error('Hubo un error');
+            }
           }
         );
       }else{
         this.toastr.info('Las contraseñas no coinciden');
       }
     }
+  }
+
+  clean(){
+    this.userRegister.email = "";
+    this.userRegister.password = "";
+    this.userRegister.confirm_password = "";
   }
 
 }

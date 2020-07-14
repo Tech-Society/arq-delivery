@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ListCustomersComponent implements OnInit {
 
   public listUsers = [];
+  public listUsersBack = [];
+  p: number = 1;
   public user = {
     first_name: '',
     last_name: '',
@@ -30,6 +32,7 @@ export class ListCustomersComponent implements OnInit {
     this.http.getUsers().subscribe(
       data => {
         this.listUsers = data.data;
+        this.listUsersBack = data.data;
       }
     );
   }
@@ -70,4 +73,23 @@ export class ListCustomersComponent implements OnInit {
     this.user.confirm_password = "";
   }
 
+
+  search(term: string) {
+    if (term) {
+        this.listUsers = this.listUsers.filter(x =>
+            this.evaluate(x, term)
+        );
+    } else {
+        this.listUsers = this.listUsersBack;
+    }
+}
+
+evaluate(x, term) {
+    if (!x.first_name) {
+        x.first_name = "";
+    }
+    return (
+        x.first_name.trim().toLowerCase().includes(term.trim().toLowerCase()) 
+    )
+}
 }

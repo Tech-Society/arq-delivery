@@ -25,6 +25,8 @@ export class CestaComponent implements OnInit {
   public address;
   public detail;
   public type_delivery = "0";
+  public code_services = "";
+  public cestaLenght = false;
 
  
 
@@ -55,6 +57,7 @@ export class CestaComponent implements OnInit {
   getCesta(){
     const cesta = JSON.parse(localStorage.getItem('cesta'));
     if(cesta != null){
+      this.cestaLenght = true;
       this.http.getService().subscribe(
         data => {
           const array = data.data;
@@ -71,6 +74,7 @@ export class CestaComponent implements OnInit {
         }
       );
     }else{
+      this.cestaLenght = false;
       this.listCesta = [];
     }
   }
@@ -86,28 +90,54 @@ export class CestaComponent implements OnInit {
     }
   }
 
+  cleanCesta(){
+    localStorage.removeItem('cesta');
+    this.toastr.info('Se ha limpiado su cesta');
+    this.sumCesta = 0;
+    this.getCesta();
+  }
+
 
 
 
   addServicesUser(){
-    var cesta_array = JSON.parse(localStorage.getItem('cesta'));
-    const data = {
-      userId: this.users.userId,
-      services: cesta_array,
-      address: this.address,
-      detail: this.detail,
-      type_delivery: this.type_delivery
+    const dataUser = {
+      first_name: this.users.first_name,
+      last_name: this.users.last_name,
+      phone: this.users.phone,
+      userId: this.users.userId
     };
-    this.http.addUserServices(data).subscribe(
+    this.http.updateUser(dataUser).subscribe(
       data => {
-        this.toastr.success('Orden de compra realizada');
-        this.clean();
-        this.getCesta();
+        if(data.status === "success"){
+          var cesta_array = JSON.parse(localStorage.getItem('cesta'));
+          const data = {
+            userId: this.users.userId,
+            services: cesta_array,
+            address: this.address,
+            detail: this.detail,
+            type_delivery: this.type_delivery
+          };
+          this.http.addUserServices(data).subscribe(
+            data => {
+              console.log(data);
+              const code = data.code_services;
+              this.code_services = code.split('-')[1];
+              this.toastr.success('Orden de compra realizada');
+              this.clean();
+              this.getCesta();
+              window.open('https://api.whatsapp.com/send?phone=51938438919&text=%C2%A1Hola!%2c+acabo+de+realizar+un+pedido+desde+Lavanderiastotalcleaning.com+con+codigo+de+pedido:+'+this.code_services+'.', "_blank");
+              window.location.href = "/landing";
+            }
+          ) 
+        }else{
+          this.toastr.error('Hubo un error');
+        }
       }
-    ) 
+    );
+    
    
-    window.open('https://api.whatsapp.com/send?phone=51938438919&text=%C2%A1Hola!%2c+acabo+de+realizar+un+pedido+desde+Lavanderiastotalcleaning.com', "_blank");
-    window.location.href = "/landing";
+    
   }
 
   clean(){

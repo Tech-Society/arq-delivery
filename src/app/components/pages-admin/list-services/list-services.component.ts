@@ -19,6 +19,7 @@ export class ListServicesComponent implements OnInit {
     clothingId: ''
   };
   public listServices = [];
+  public listServicesBack = [];
   public URL = "";
   p: number = 1;
   public URLimage = "";
@@ -51,6 +52,7 @@ export class ListServicesComponent implements OnInit {
     this.http.getService().subscribe(
       data => {
         this.listServices = data.data;
+        this.listServicesBack = data.data;
       }
     );
   }
@@ -60,6 +62,25 @@ export class ListServicesComponent implements OnInit {
     this.services.description = "";
     this.services.price = "";
     this.services.clothingId = "";
+  }
+
+    search(term: string) {
+      if (term) {
+          this.listServices = this.listServices.filter(x =>
+              this.evaluate(x, term)
+          );
+      } else {
+          this.listServices = this.listServicesBack;
+      }
+  }
+
+  evaluate(x, term) {
+      if (!x.title) {
+          x.title = "";
+      }
+      return (
+          x.title.trim().toLowerCase().includes(term.trim().toLowerCase()) 
+      )
   }
 
 }
