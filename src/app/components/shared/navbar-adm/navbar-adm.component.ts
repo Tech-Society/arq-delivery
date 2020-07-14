@@ -12,4 +12,10 @@ export class NavbarAdmComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    localStorage.removeItem('users');
+    localStorage.removeItem('profile');
+    window.location.href = "/landing";
+  }
+
 }

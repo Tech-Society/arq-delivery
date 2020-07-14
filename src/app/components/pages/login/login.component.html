@@ -15,19 +15,19 @@
                 <img src="./assets/logo.png" alt="">
             </div>
             <div class="md-input">
-                <input class="md-form-control" type="text" required="" autocomplete="new-password">
+                <input class="md-form-control" type="text" required="" [(ngModel)]="user.email" autocomplete="new-password">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label> <img src="./assets/icons/user.svg" alt="user" width="14"> Usuario</label>
             </div>
             <div class="md-input">
-                <input class="md-form-control" type="password" required="" autocomplete="new-password">
+                <input class="md-form-control" type="password" required="" [(ngModel)]="user.password" autocomplete="new-password">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label><img src="./assets/icons/password.svg" alt="password" width="14"> Contraseña</label>
             </div>
             <div class="md-input">
-                <input type="button"  class="btn btn-enter" value="Ingresar">
+                <input type="button" (click)="signin()"  class="btn btn-enter" value="Ingresar">
             </div>
           
            
