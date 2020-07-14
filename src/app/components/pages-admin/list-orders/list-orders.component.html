@@ -33,18 +33,25 @@
           <thead>
             <tr>
               <th scope="col">Código</th>
+              <th scope="col">Cliente</th>
               <th scope="col">Fecha Solicitud</th>
-              <th scope="col">Tipo Servicio</th>
+              <th scope="col">Tipo de delivery</th>
               <th scope="col">Estado</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>132323</td>
-              <td>10/03/12</td>
-              <td>Lavado Cortinas</td>
-              <td>No completado</td>
+            <tr *ngFor="let us of listUserServices">
+              <td>{{us.code}}</td>
+              <td>{{us.first_name + ' ' + us.last_name }}</td>
+              <td>{{us.date_start}}</td>
+              <td *ngIf="us.type_delivery === 1">Recojo</td>
+              <td *ngIf="us.type_delivery === 2">Envío</td>
+              <td *ngIf="us.type_delivery === 3">Recojo y envío</td>
+              <td *ngIf="us.type_delivery === 4">Ninguno</td>
+              <td *ngIf="us.state === '1'"><span class="badge badge-warning">En proceso</span></td>
+              <td *ngIf="us.state === '2'"><span class="badge badge-primary">Enviando</span></td>
+              <td *ngIf="us.state === '3'"><span class="badge badge-danger">Entregado</span></td>
               <td class="df-fr">
                 <div style="cursor: pointer" data-toggle="modal" data-target="#newUser"> <img
                     src="assets/icons/edit.svg" width="12" alt=""> <span class="ml-2 asignarPriv">Actualizar

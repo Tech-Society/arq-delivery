@@ -27,10 +27,28 @@ export class NavbarComponent implements OnInit {
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;
   }
+
+  public session = false;
   
   constructor(private http: HttpService, private toastr: ToastrService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit(): void {
+    this.validateSession();
+  }
+
+  logout(){
+    localStorage.removeItem('users');
+    localStorage.removeItem('profile');
+    window.location.reload();
+  }
+
+  validateSession(){
+    const user = JSON.parse(localStorage.getItem('users'));
+    if(user === null){
+      this.session = false;
+    }else{
+      this.session = true;
+    }
   }
 
   signin(){
@@ -49,7 +67,7 @@ export class NavbarComponent implements OnInit {
             }else{
               localStorage.setItem('users', JSON.stringify(data.data));
               localStorage.setItem('profile', JSON.stringify('Usuario'));
-              window.location.href = 'landing';
+              window.location.reload();
             }
           }else{
             this.toastr.error('Credenciales incorrectas');

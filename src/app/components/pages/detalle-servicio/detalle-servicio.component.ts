@@ -38,18 +38,27 @@ export class DetalleServicioComponent implements OnInit {
       data => {
         // @ts-ignore
         const services_data = data.data[0];
-        this.services.servicesId = services_data.servicesId
-        this.services.title = services_data.title
-        this.services.description = services_data.description
-        this.services.clothingId = services_data.clothingId
-        this.services.price = services_data.price
-        this.services.image = services_data.image
+        this.services.servicesId = services_data.servicesId;
+        this.services.title = services_data.title;
+        this.services.description = services_data.description;
+        this.services.clothingId = services_data.clothingId;
+        this.services.price = services_data.price;
+        this.services.image = services_data.image;
       }
     );
   }
 
   requestService(i){
-    localStorage.setItem('cesta', JSON.stringify(i));
+    const cesta = JSON.parse(localStorage.getItem('cesta'));
+    if(cesta === null){
+      const cesta_array = [{ cesta: i }];
+      localStorage.setItem('cesta', JSON.stringify(cesta_array));
+      this._router.navigate(['/cesta']);
+    }else{
+      cesta.push({ cesta : i });
+      localStorage.setItem('cesta', JSON.stringify(cesta));
+      this._router.navigate(['/cesta']);
+    }
     this.toastr.success('Agregado a la cesta');
   }
 

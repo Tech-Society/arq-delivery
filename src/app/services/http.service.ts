@@ -29,6 +29,11 @@ export class HttpService {
     return this.http.post(this.url + '/user/signup', data, { headers: headers }).map(res => res.json());
   }
 
+  getUser(i) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + '/user/'+i, { headers: headers }).map(res => res.json());
+  }
+
   getUsers() {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.get(this.url + '/user/list', { headers: headers }).map(res => res.json());
@@ -71,6 +76,18 @@ export class HttpService {
       xhr.open("POST", url + "/services/create", true);
       xhr.send(formData);
     });
+  }
+
+  /*************** User Services ***************/
+
+  addUserServices(data) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.url + '/userServices/add', data, { headers: headers }).map(res => res.json());
+  }
+
+  getUserServices() {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + '/userServices/getList', { headers: headers }).map(res => res.json());
   }
 
   /*************** Token Decoded ***************/

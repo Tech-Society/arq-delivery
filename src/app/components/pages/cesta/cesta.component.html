@@ -10,16 +10,17 @@
         <form class="m-4 form-datos">
             <div class="mb-4">
                 <span class="title-form">Datos personales</span>
-                <span class="pl-4"><a class="link-call" data-toggle="modal" data-target="#staticBackdrop">Ya eres cliente? Ingresar con mi usuario</a></span>
+                <span class="pl-4"><a class="link-call" style="cursor: pointer;" data-toggle="modal" data-target="#staticBackdrop">Ya eres cliente? Ingresar con mi usuario</a></span>
             </div>
+            <div class="pt-3"></div>
             <div class="form-group row">
                 <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="text" required="" name="first_name">
+                    <input class="md-form-input" type="text" [(ngModel)]="users.first_name" required="" name="first_name">
                     <span class="highlight"></span>
                     <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Nombres</label>
                 </div>
                 <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="text" required="" name="last_name">
+                    <input class="md-form-input" type="text" [(ngModel)]="users.last_name" required="" name="last_name">
                     <span class="highlight"></span>
                     <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Apellidos</label>
                 </div>
@@ -28,13 +29,13 @@
 
             <div class="form-group row">
                 <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="email">
+                    <input class="md-form-input" type="text" autocomplete="new-password" [(ngModel)]="users.email" required="" name="email">
                     <span class="highlight"></span>
                     <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Correo</label>
 
                 </div>
                 <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="phone">
+                    <input class="md-form-input" type="text" autocomplete="new-password" [(ngModel)]="users.phone" required="" name="phone">
                     <span class="highlight"></span>
                     <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Teléfono</label>
 
@@ -43,40 +44,24 @@
             <div class="mb-4">
                 <span class="title-form">Datos para envío o recojo</span>
             </div>
+            <div class="pt-3"></div>
             <div class="form-group row">
                 <div class="col-sm-12 md-input pb-2">
-                    <input class="md-form-input" type="text" autocomplete="new-password" required="" name="phone">
+                    <input class="md-form-input" type="text" autocomplete="new-password" [(ngModel)]="address" required="" name="address">
                     <span class="highlight"></span>
                     <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Direccion</label>
-
                 </div>
                 <div class="col-sm-12 md-input">
-                    <textarea class="md-form-input" placeholder="Nota de envio o recojo"></textarea>
-
+                    <textarea class="md-form-input" placeholder="Nota de envio o recojo" [(ngModel)]="detail" name="detail"></textarea>
                 </div>
-            </div>
-
-            <div class="mb-4">
-                <span class="title-form">No eres cliente?</span>
-            </div>
-            <div class="form-group row">
                 <div class="col-sm-12 md-input">
-                    <input class="md-form-input" type="text" required="">
-                    <span class="highlight"></span>
-                    <label class="label2"><img src="assets/icons/edit.svg" width="12" alt=""> Usuario</label>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="password" autocomplete="new-password" required="">
-                    <span class="highlight"></span>
-                    <label class="label2"><i class="fas fa-key"></i> Contraseña</label>
-                    <small>Contraseña mayor a 6 dígitos</small>
-                </div>
-                <div class="col-sm-6 md-input">
-                    <input class="md-form-input" type="password" autocomplete="new-password" required="">
-                    <span class="highlight"></span>
-                    <label class="label2"><i class="fas fa-key"></i> Repetir contraseña</label>
+                    <select class="md-form-input" [(ngModel)]="type_delivery" name="type_delivery">
+                        <option value="0">Tipo de delivery</option>
+                        <option value="1">Recojo</option>
+                        <option value="2">Envío</option>
+                        <option value="3">Recojo y envío</option>
+                        <option value="4">Ninguno</option>
+                    </select>
                 </div>
             </div>
 
@@ -90,18 +75,16 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Servicio</th>
-                            <th scope="col">Tipo Delivery</th>
                             <th scope="col">Precio</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Lavado</td>
-                            <td>Recojo</td>
-                            <td>14</td>
-                            <td><img src="assets/icons/delete.svg" width="12" alt=""> </td>
+                        <tr *ngFor="let s of listCesta; let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{s.title}}</td>
+                            <td>S/. {{s.price}}</td>
+                            <td><a (click)="deleteCesta(s.servicesId)"><img src="assets/icons/delete.svg" width="12" alt=""></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -109,10 +92,10 @@
         </div>
         <div class="precioTotal">
             <h4>Precio:</h4>
-            <h5>S/ 20</h5>
+            <h5>S/ {{sumCesta}}</h5>
         </div>
         <div class="btnSide">
-            <input type="button" class="btn btn-solicitud" value="Solicitar Orden">
+            <input type="button" class="btn btn-solicitud" value="Solicitar Orden" (click)="addServicesUser()">
             <a href="#" class="pt-2 link-call">Volver a servicio</a>
         </div>
 
