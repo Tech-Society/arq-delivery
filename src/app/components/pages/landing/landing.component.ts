@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';  
-import { HttpService } from 'src/app/services/http.service';
-import { GLOBAL } from '../../../services/global';
 
 @Component({
   selector: 'app-landing',
@@ -10,21 +8,15 @@ import { GLOBAL } from '../../../services/global';
 })
 export class LandingComponent implements OnInit {
 
-  public listService = [];
-  public URLimage = "";
-
-  constructor(private http: HttpService) {
-    this.URLimage = GLOBAL.image;
+  constructor(config: NgbCarouselConfig) { 
+    config.interval = 3000;  
+    config.showNavigationArrows = true;
+    config.wrap = true;  
+    config.keyboard = false;  
+    config.pauseOnHover = false; 
   }
 
   ngOnInit(): void {
-    this.getServices();
   }
-  getServices(){
-    this.http.getService().subscribe(
-      data => {
-        this.listService = data.data;
-      }
-    );
-  }
+
 }
