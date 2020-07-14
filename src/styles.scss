@@ -1001,6 +1001,7 @@ ngb-carousel {
 }
 .sidebar-landing{
   display: flex;
+  flex-direction: column;
   // border: 1px solid #cccccc;
   width: 28%;
 }
