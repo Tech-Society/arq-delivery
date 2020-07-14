@@ -26,6 +26,8 @@ export class CestaComponent implements OnInit {
   public detail;
   public type_delivery = "0";
 
+ 
+
   constructor(private toastr: ToastrService, private _route: ActivatedRoute, private _router: Router, private http: HttpService) { }
 
   ngOnInit(): void {
@@ -84,6 +86,9 @@ export class CestaComponent implements OnInit {
     }
   }
 
+
+
+
   addServicesUser(){
     var cesta_array = JSON.parse(localStorage.getItem('cesta'));
     const data = {
@@ -99,7 +104,10 @@ export class CestaComponent implements OnInit {
         this.clean();
         this.getCesta();
       }
-    )
+    ) 
+   
+    window.open('https://api.whatsapp.com/send?phone=51938438919&text=%C2%A1Hola!%2c+acabo+de+realizar+un+pedido+desde+Lavanderiastotalcleaning.com', "_blank");
+    window.location.href = "/landing";
   }
 
   clean(){
