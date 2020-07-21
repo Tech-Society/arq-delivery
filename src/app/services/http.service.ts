@@ -143,6 +143,11 @@ export class HttpService {
     return this.http.get(this.url + '/user/ordenes/'+userId, { headers: headers }).map(res => res.json());
   }
 
+  getCodeService(data) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.url + '/userServices/getCode', data, { headers: headers }).map(res => res.json());
+  }
+
   /*************** Token Decoded ***************/
 
   decodedToken() {

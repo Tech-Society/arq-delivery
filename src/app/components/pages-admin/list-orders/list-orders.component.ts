@@ -15,6 +15,7 @@ export class ListOrdersComponent implements OnInit {
   public listUserBack = [];
   public code_complete = "";
   public state_service = "";
+  public dataService = [];
   p: number = 1;
   constructor(private toastr: ToastrService, private _route: ActivatedRoute, private _router: Router, private http: HttpService) { }
 
@@ -27,6 +28,16 @@ export class ListOrdersComponent implements OnInit {
       data => {
         this.listUserServices = data.data;
         this.listUserBack = data.data;
+      }
+    );
+  }
+
+  getServicesCode(code){
+    const dataService = { code: code };
+    this.http.getCodeService(dataService).subscribe(
+      data => {
+        console.log(data);
+        this.dataService = data.data;
       }
     );
   }
