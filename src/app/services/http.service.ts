@@ -49,6 +49,11 @@ export class HttpService {
     return this.http.put(this.url + '/user/update', data, { headers: headers }).map(res => res.json());
   }
 
+  deleteUser(i) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + '/user/delete/'+i, { headers: headers }).map(res => res.json());
+  }
+
   /*************** Services ***************/
 
   getService() {
@@ -59,6 +64,16 @@ export class HttpService {
   getServiceById(i) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.get(this.url + '/services/'+i, { headers: headers }).map(res => res.json());
+  }
+
+  deleteService(i) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + '/services/delete/'+i, { headers: headers }).map(res => res.json());
+  }
+
+  updateServicess(data){
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.post(this.url + '/services/update', data, { headers: headers }).map(res => res.json());
   }
 
   newServices( url: string, files: Array<File>, name: string, title: string, description: string, price: string, clothingId: string ) {
@@ -83,6 +98,29 @@ export class HttpService {
     });
   }
 
+  updateServices( url: string, files: Array<File>, name: string, servicesId: number, title: string, description: string, price: string, clothingId: string ) {
+    return new Promise(function (resolve, reject) {
+      var formData: any = new FormData();
+      var xhr = new XMLHttpRequest();
+      for (var i = 0; i < files.length; i++) {
+        formData.append('servicesId', servicesId);
+        formData.append('title', title);
+        formData.append('description', description);
+        formData.append('price', price);
+        formData.append('clothingId', clothingId);
+        formData.append(name, files[i], files[i].name);
+      }
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) { resolve(JSON.parse(xhr.response));}
+          else { reject(xhr.response); }
+        }
+      }
+      xhr.open("POST", url + "/services/updateImage", true);
+      xhr.send(formData);
+    });
+  }
+
   /*************** User Services ***************/
 
   addUserServices(data) {
@@ -98,6 +136,11 @@ export class HttpService {
   updateStateUserServices(data) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     return this.http.put(this.url + '/userServices/update', data, { headers: headers }).map(res => res.json());
+  }
+
+  getOrdenes(userId){
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + '/user/ordenes/'+userId, { headers: headers }).map(res => res.json());
   }
 
   /*************** Token Decoded ***************/

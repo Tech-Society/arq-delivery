@@ -116,7 +116,8 @@ export class CestaComponent implements OnInit {
             services: cesta_array,
             address: this.address,
             detail: this.detail,
-            type_delivery: this.type_delivery
+            type_delivery: this.type_delivery,
+            monto: this.sumCesta
           };
           this.http.addUserServices(data).subscribe(
             data => {

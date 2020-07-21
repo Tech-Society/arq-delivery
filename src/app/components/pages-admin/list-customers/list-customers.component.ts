@@ -22,6 +22,16 @@ export class ListCustomersComponent implements OnInit {
     password: '',
     confirm_password: ''
   };
+
+  public userss = {
+    userId : 0,
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    password: '',
+    confirm_password: ''
+  };
   constructor(private http: HttpService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -33,6 +43,37 @@ export class ListCustomersComponent implements OnInit {
       data => {
         this.listUsers = data.data;
         this.listUsersBack = data.data;
+      }
+    );
+  }
+
+  editUser(i){
+    this.http.getUser(i).subscribe(
+      data => {
+        const result = data.data[0];
+        this.userss.userId = result.userId;
+        this.userss.first_name = result.first_name;
+        this.userss.last_name = result.last_name;
+        this.userss.email = result.email;
+        this.userss.phone = result.phone;
+      }
+    );
+  }
+
+  updateUser(){
+    this.http.updateUser(this.userss).subscribe(
+      data => {
+        this.toastr.success('Usuario actualizado');
+        this.getUsers();
+      }
+    );
+  }
+
+  deleteUser(i){
+    this.http.deleteUser(i).subscribe(
+      data => {
+        this.toastr.success('Usuario eliminado');
+        this.getUsers();
       }
     );
   }
